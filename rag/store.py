@@ -88,6 +88,7 @@ class OllamaEmbeddingFunction(EmbeddingFunction[Documents]):
 class VectorStore:
     def __init__(self, port: int | None = None, url: str | None = None) -> None:
         self._client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+        CHROMA_DIR.mkdir(parents=True, exist_ok=True)
         self._embed = OllamaEmbeddingFunction(url=url, model_name=EMBED_MODEL, port=port)
 
     def set_port(self, port: int | None) -> None:
