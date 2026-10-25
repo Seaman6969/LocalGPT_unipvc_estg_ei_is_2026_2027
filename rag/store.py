@@ -177,7 +177,6 @@ def _query_safe_helper(collection: chromadb.Collection, text: str, top_k: int) -
             exact_matches: list[dict[str, Any]] = []
             seen_texts: set[str] = set()
 
-            # Exact keyword / identifier boost (e.g. PN XF557549)
             candidates = _extract_identifiers(text)
             for code in candidates:
                 try:
